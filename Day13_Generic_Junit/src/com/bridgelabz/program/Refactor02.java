@@ -1,50 +1,34 @@
 package com.bridgelabz.program;
 
-public class Refactor02 {
-	public static <D extends Comparable<D>> D maximum(D x, D z) {
-		D max = z;
-		if (z.compareTo(max) > 0) {
-				max = x;
-		}			
+public class Refactor02<E extends Comparable<E>> {
+	E firstValue;
+	E secondValue;
+	E thirdValue;
+
+	public Refactor02(E firstValue, E secondValue, E thirdValue) {
+		this.firstValue = firstValue;
+		this.secondValue = secondValue;
+		this.thirdValue = thirdValue;
+	}
+	
+	public static <E extends Comparable<E>> E getMax(E firstValue, E secondValue, E thirdValue) {
+		E max = firstValue;
+		if (secondValue.compareTo(max) > 0)
+			max = secondValue;
+		if (thirdValue.compareTo(max) > 0)
+			max = thirdValue;
 		return max;
 	}
 	
-		public class Refactorsecond {
-			
-			public static <D extends Comparable<D>> D maximum(D y, D z) {
-				D max = y;
-				if (y.compareTo(max) > 0) {
-					max = z;
-				}			
-				return max;
-			}
-			
-		public class Refactorthird {
-				
-			public static <D extends Comparable<D>> D maximum(D x, D z) {
-				D max = z;
-				if (z.compareTo(max) > 0) {
-						max = x;
-				}			
-				return max;
-			}
-		
-		}
 	public static void main(String[] args) {
-		System.out.println("Maximum is " + maximum(1,2,3));
-		System.out.println("Maximum is " + maximum(1.1,2.2,3.3));
-		System.out.println("Maximum is " + maximum("Name","Deepak","Kumar"));		
-		}
-	private static String maximum(double d, double e, double f) {
-		System.out.println("Maximum is " + maximum(1.1,2.2,3.3));
-		return null;
+		System.out.println(new Refactor02(1.1f,2.2f,3.3f).getMax());
+		System.out.println(new Refactor02(10,20,30).getMax());
+		System.out.println(new Refactor02("Deepak", "Aryan", "Kumar").getMax());
 	}
-	private static String maximum(String string, String string2, String string3) {
-		System.out.println("Maximum is " + maximum("Name","Deepak","Kumar"));	
-		return null;
-		}
-	 }	
-  }
 
-
+	public <E extends Comparable<E>> E getMax() {
+		E max = (E) getMax(firstValue, secondValue, thirdValue);
+		return max;
+	}
+}
 
